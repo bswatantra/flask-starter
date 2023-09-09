@@ -1,4 +1,5 @@
 from flask import Blueprint, request, render_template, redirect, url_for
+from app.models.user import User as UserModel
 
 bp = Blueprint(
     'users',
@@ -14,8 +15,8 @@ def index():
         user = request.form
 
         return redirect(url_for('users.index'))
-
-    return render_template('user/index.html')
+    users = UserModel.query.all()
+    return render_template('user/index.html', users=users)
 
 
 @bp.route("<int:id>")

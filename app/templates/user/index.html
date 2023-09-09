@@ -8,6 +8,10 @@
 
 {% block content %}
 
-<h1>Index</h1>
+<ul id="navigation">
+    {% for user in users %}
+    <li><a href="">{{ user.name }}</a></li>
+    {% endfor %}
+</ul>
 
 {% endblock %}
